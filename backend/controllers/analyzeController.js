@@ -1,4 +1,4 @@
-const pdfParse = require('pdf-parse');
+const pdfParse = require('pdf-parse-debugging-disabled');
 const analyzerService = require('../services/resumeAnalyzer');
 
 exports.analyzeResume = async (req, res) => {
@@ -36,6 +36,6 @@ exports.analyzeResume = async (req, res) => {
 
   } catch (error) {
     console.error('Error analyzing resume:', error);
-    res.status(500).json({ message: 'Server error while analyzing resume.' });
+    res.status(500).json({ message: 'Server error while analyzing resume: ' + (error.message || error.toString()) });
   }
 };
