@@ -27,9 +27,7 @@ app.get('/', (req, res) => {
 // Analyze resume route
 app.post('/api/analyze', upload.single('resume'), analyzeController.analyzeResume);
 
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
-}
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 module.exports = app;
