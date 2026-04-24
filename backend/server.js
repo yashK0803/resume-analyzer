@@ -24,10 +24,12 @@ app.get('/', (req, res) => {
   res.send('Resume Analyzer API is running.');
 });
 
-// Analyze resume route
-app.post('/api/analyze', upload.single('resume'), analyzeController.analyzeResume);
+// Analyze resume route (handles both local and Vercel stripped prefix)
+app.post(['/api/analyze', '/analyze'], upload.single('resume'), analyzeController.analyzeResume);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}
 module.exports = app;
