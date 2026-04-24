@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Briefcase, LayoutDashboard, FileText, Lightbulb, UserCircle } from 'lucide-react';
+import LoginPage from './pages/LoginPage';
 import UploadPage from './pages/UploadPage';
 import Dashboard from './pages/Dashboard';
 import AnalysisPage from './pages/AnalysisPage';
@@ -13,13 +14,13 @@ function App() {
       <div className="app-layout">
         <nav className="navbar glass-panel">
           <div className="container nav-container">
-            <Link to="/" className="logo">
+            <Link to="/upload" className="logo">
               <Briefcase className="logo-icon" size={28} />
               <span className="gradient-text">ResumePro</span>
             </Link>
             
             <div className="nav-links">
-              <Link to="/" className="nav-link">
+              <Link to="/upload" className="nav-link">
                 <LayoutDashboard size={18} />
                 <span>Upload</span>
               </Link>
@@ -35,17 +36,18 @@ function App() {
                 <Lightbulb size={18} />
                 <span>Suggestions</span>
               </Link>
-              <button className="btn btn-outline login-btn">
+              <Link to="/" className="btn btn-outline login-btn">
                 <UserCircle size={18} />
                 <span>Login</span>
-              </button>
+              </Link>
             </div>
           </div>
         </nav>
 
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<UploadPage />} />
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/upload" element={<UploadPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/analysis" element={<AnalysisPage />} />
             <Route path="/suggestions" element={<SuggestionsPage />} />
