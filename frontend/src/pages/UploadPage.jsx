@@ -74,7 +74,7 @@ const UploadPage = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/analyze', formData, {
+      const response = await axios.post('/api/analyze', formData, {
         headers: activeTab === 'pdf' ? { 'Content-Type': 'multipart/form-data' } : { 'Content-Type': 'application/json' }
       });
       // Save results
